@@ -30,6 +30,7 @@ public class HomeController {
 
     private final ImageService imageService;
 
+
     @Autowired
     public HomeController(ImageService imageService) {
         this.imageService = imageService;
@@ -39,6 +40,12 @@ public class HomeController {
     public String index(Model model, Pageable pageable) {
         final Page<Image> page = imageService.findPage(pageable);
         model.addAttribute("page", page);
+        if (page.hasPrevious()) {
+            model.addAttribute("prev", pageable.previousOrFirst());
+        }
+        if(page.hasNext()) {
+            model.addAttribute("next", pageable.next());
+        }
         return "index";
     }
 
