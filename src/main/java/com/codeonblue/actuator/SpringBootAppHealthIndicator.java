@@ -16,7 +16,7 @@ public class SpringBootAppHealthIndicator implements HealthIndicator{
     public Health health() {
         try {
             int responseCode =
-                    ((HttpURLConnection)new URL("http://greglturnquist.com/learning-spring-bootiful").openConnection()).getResponseCode();
+                    ((HttpURLConnection)new URL("http://greglturnquist.com/learning-spring-boot").openConnection()).getResponseCode();
             if (responseCode >= 200 && responseCode < 300) {
                 return Health.up().build();
             } else {
