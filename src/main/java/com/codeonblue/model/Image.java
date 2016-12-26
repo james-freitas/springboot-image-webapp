@@ -14,14 +14,10 @@ public class Image {
 
     private String name;
 
-    @OneToOne
-    private User owner;
-
     private Image() {}
 
-    public Image(String name, User owner) {
+    public Image(String name) {
         this.name = name;
-        this.owner = owner;
     }
 
     public Long getId() {
@@ -40,11 +36,4 @@ public class Image {
         this.name = name;
     }
 
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
 }
