@@ -74,6 +74,8 @@ public class ImageService {
 
     public void createImage(MultipartFile file) throws IOException {
 
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+
         if(!file.isEmpty()) {
             Files.copy(file.getInputStream(), Paths.get(UPLOAD_ROOT, file.getOriginalFilename()));
             imageRepository.save(new Image(
